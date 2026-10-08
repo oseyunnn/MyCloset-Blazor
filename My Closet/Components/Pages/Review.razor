@@ -1,0 +1,263 @@
+@page "/review"
+@rendermode InteractiveServer
+
+<div class="relative w-full min-h-screen bg-review-texture overflow-x-hidden flex flex-col justify-between select-none">
+
+    <!-- Header / Navbar -->
+    <header class="relative z-30 flex items-center justify-between px-8 py-5 md:px-16">
+        <a href="/" class="font-inspiration text-4xl text-white drop-shadow-sm leading-none transition-all duration-300 hover:rotate-[-3deg] hover:scale-105">
+            My Closet
+        </a>
+
+        <nav class="flex items-center gap-8">
+            <a href="/" class="group relative font-inika text-base text-gray-900 font-semibold hover:text-white transition-all duration-200 hover:-translate-y-0.5 inline-block">
+                home
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="/about" class="group relative font-inika text-base text-gray-900 font-semibold hover:text-white transition-all duration-200 hover:-translate-y-0.5 inline-block">
+                about
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="/works" class="group relative font-inika text-base text-gray-900 font-semibold hover:text-white transition-all duration-200 hover:-translate-y-0.5 inline-block">
+                works
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="/review" class="group relative font-inika text-base text-white font-bold inline-block">
+                review
+                <span class="absolute left-0 -bottom-1 h-[2px] w-full bg-white"></span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Top Section: "Thoughts of YOU" Hero Header -->
+    <section class="relative z-20 pt-6 pb-12 px-6 max-w-[1100px] mx-auto w-full flex flex-col items-center">
+        
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 w-full mb-8">
+            <!-- Left Header Title Block -->
+            <div class="flex flex-col items-start leading-none">
+                <span class="font-inspiration text-7xl sm:text-8xl md:text-9xl text-white drop-shadow-md">
+                    Thoughts
+                </span>
+                <div class="flex items-center gap-3 -mt-4 sm:-mt-6">
+                    <span class="font-inika font-bold text-2xl sm:text-3xl text-white">of</span>
+                    <div class="bg-[#EFA7C8] px-6 py-2 rounded-2xl shadow-md border-2 border-white/60">
+                        <span class="font-inika font-black text-4xl sm:text-6xl text-white tracking-widest">
+                            YOU
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side Description Quote -->
+            <div class="max-w-[340px] pl-4 border-l-2 border-white/50 text-white font-inika text-sm sm:text-base leading-snug">
+                I love to hear from people I have recently met or work with. Please feel free to leave your thoughts and ratings on this little bean. I appreciate it!
+            </div>
+        </div>
+
+        <!-- Submit Review Button -->
+        <button @onclick="OpenModal" 
+                class="bg-[#EFA7C8] hover:bg-[#E290B5] active:scale-95 text-white font-inika font-bold tracking-wider text-sm sm:text-base px-8 py-3 rounded-2xl shadow-paper transition-all duration-200 border border-white/40 cursor-pointer">
+            SUBMIT REVIEW
+        </button>
+    </section>
+
+    <!-- Bottom Section: RECENT REVIEWS -->
+    <section class="relative z-10 w-full bg-review-dark-texture pt-10 pb-16 px-6 flex-1 flex flex-col items-center">
+        <h2 class="font-inika font-black text-2xl sm:text-3xl text-white tracking-wider mb-8 text-center drop-shadow-xs">
+            RECENT REVIEWS
+        </h2>
+
+        <!-- Review Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[950px] w-full">
+            @foreach (var review in Reviews)
+            {
+                <div class="bg-white/95 backdrop-blur-xs rounded-3xl p-6 shadow-paper flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-paper-lg">
+                    <!-- Rating Stars & Number -->
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-[#79A971] text-xl">★</span>
+                        <span class="font-inika font-bold text-gray-800 text-lg">@review.Rating.ToString("0.0")</span>
+                    </div>
+
+                    <!-- Review Title -->
+                    <h3 class="font-inika font-black text-[#EFA7C8] text-lg uppercase tracking-wide mb-3">
+                        @review.Title
+                    </h3>
+
+                    <!-- Review Text -->
+                    <p class="font-inika text-gray-700 text-xs sm:text-sm leading-relaxed max-w-[360px]">
+                        @review.Comment
+                    </p>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- FORM MODAL / POPUP OVERLAY -->
+    @if (IsModalOpen)
+    {
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/40 backdrop-blur-xs animate-fadeIn">
+            
+            <!-- Modal Card (Rounded White Card matching right design) -->
+            <div class="relative w-full max-w-[720px] max-h-[92vh] overflow-y-auto bg-[#F4F2F0] rounded-[36px] shadow-2xl p-6 sm:p-10 flex flex-col items-center animate-modal-pop border-4 border-white">
+                
+                <!-- Close Button (X) -->
+                <button @onclick="CloseModal" class="absolute top-6 right-6 text-gray-400 hover:text-gray-700 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors">
+                    ✕
+                </button>
+
+                <!-- Form Header -->
+                <h2 class="font-inika font-black text-2xl sm:text-3xl text-[#EFA7C8] tracking-widest uppercase mb-2 text-center">
+                    PEER REVIEW
+                </h2>
+                <p class="font-inika text-gray-700 text-xs sm:text-sm text-center max-w-[580px] leading-relaxed mb-6 font-medium">
+                    As someone who values the evaluation of her peers, I am hoping to ask for a moment of your time to share your experience working with me in different project, gigs, or other sidequests. Would love to hear from you!
+                </p>
+
+                <!-- Input Form -->
+                <div class="w-full flex flex-col gap-5 max-w-[580px]">
+                    
+                    <!-- Sender Name -->
+                    <div class="flex flex-col items-center">
+                        <label class="font-inika font-bold text-[#EFA7C8] text-sm uppercase tracking-wider mb-1.5">
+                            SENDER NAME
+                        </label>
+                        <input type="text" @bind="NewReview.SenderName" placeholder="" class="w-full bg-[#E2E1E1] text-gray-800 font-inika text-sm rounded-full px-5 py-2.5 outline-none focus:ring-2 focus:ring-[#EFA7C8] transition-all text-center" />
+                    </div>
+
+                    <!-- Event We Worked With -->
+                    <div class="flex flex-col items-center">
+                        <label class="font-inika font-bold text-[#EFA7C8] text-sm uppercase tracking-wider mb-1.5">
+                            EVENT WE WORKED WITH
+                        </label>
+                        <input type="text" @bind="NewReview.EventWorked" placeholder="" class="w-full bg-[#E2E1E1] text-gray-800 font-inika text-sm rounded-full px-5 py-2.5 outline-none focus:ring-2 focus:ring-[#EFA7C8] transition-all text-center" />
+                    </div>
+
+                    <!-- Date Of Event -->
+                    <div class="flex flex-col items-center">
+                        <label class="font-inika font-bold text-[#EFA7C8] text-sm uppercase tracking-wider mb-1.5">
+                            DATE OF EVENT
+                        </label>
+                        <input type="text" @bind="NewReview.EventDate" placeholder="" class="w-full bg-[#E2E1E1] text-gray-800 font-inika text-sm rounded-full px-5 py-2.5 outline-none focus:ring-2 focus:ring-[#EFA7C8] transition-all text-center" />
+                    </div>
+
+                    <!-- I Liked Working With Angela Because... -->
+                    <div class="flex flex-col items-center">
+                        <label class="font-inika font-bold text-[#EFA7C8] text-sm uppercase tracking-wider mb-1.5">
+                            I LIKED WORKING WITH ANGELA BECAUSE...
+                        </label>
+                        <textarea rows="3" @bind="NewReview.LikedReason" class="w-full bg-[#E2E1E1] text-gray-800 font-inika text-sm rounded-3xl p-4 outline-none focus:ring-2 focus:ring-[#EFA7C8] transition-all resize-none"></textarea>
+                    </div>
+
+                    <!-- I Didn't Like Working With Angela Because... -->
+                    <div class="flex flex-col items-center">
+                        <label class="font-inika font-bold text-[#EFA7C8] text-sm uppercase tracking-wider mb-1.5">
+                            I DIDN'T LIKE WORKING WITH ANGELA BECAUSE...
+                        </label>
+                        <textarea rows="2" @bind="NewReview.DislikedReason" class="w-full bg-[#E2E1E1] text-gray-800 font-inika text-sm rounded-3xl p-4 outline-none focus:ring-2 focus:ring-[#EFA7C8] transition-all resize-none"></textarea>
+                    </div>
+
+                    <!-- Ratings & General Comments Section -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end mt-2">
+                        
+                        <!-- Star Rating -->
+                        <div class="flex flex-col items-center sm:items-start">
+                            <span class="font-inika font-bold text-[#EFA7C8] text-sm uppercase tracking-wider mb-2">
+                                OVERALL REVIEW
+                            </span>
+                            <div class="flex items-center gap-1.5">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    var starIndex = i;
+                                    <button type="button" @onclick="() => SetRating(starIndex)" class="text-3xl transition-transform hover:scale-110 focus:outline-none">
+                                        <span class="@(starIndex <= SelectedStars ? "text-[#79A971]" : "text-[#2B382B]")">★</span>
+                                    </button>
+                                }
+                            </div>
+                        </div>
+
+                        <!-- General Comments -->
+                        <div class="flex flex-col">
+                            <label class="font-inika text-xs font-bold text-gray-700 mb-1">
+                                General comments
+                            </label>
+                            <textarea rows="2" @bind="NewReview.GeneralComments" class="w-full bg-[#E2E1E1] text-gray-800 font-inika text-xs rounded-2xl p-3 outline-none focus:ring-2 focus:ring-[#EFA7C8] transition-all resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Modal Submit Button -->
+                    <div class="flex justify-center mt-4">
+                        <button type="button" @onclick="SubmitForm" class="bg-[#EFA7C8] hover:bg-[#E290B5] active:scale-95 text-white font-inika font-bold tracking-wider text-sm px-10 py-3 rounded-full shadow-paper transition-all duration-200 border border-white/40 cursor-pointer">
+                            SUBMIT REVIEW
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    }
+
+</div>
+
+@code {
+    private bool IsModalOpen = false;
+    private int SelectedStars = 4;
+
+    private ReviewModel NewReview = new();
+
+    private List<ReviewItem> Reviews = new()
+    {
+        new ReviewItem { Rating = 4.5, Title = "A JOY TO WORK WITH!", Comment = "Working with Angela is very fun, we have lots of ideas and we find ways to integrate them with each other's expertise. Would love to work in another project together!" },
+        new ReviewItem { Rating = 4.5, Title = "A JOY TO WORK WITH!", Comment = "Working with Angela is very fun, we have lots of ideas and we find ways to integrate them with each other's expertise. Would love to work in another project together!" },
+        new ReviewItem { Rating = 4.5, Title = "A JOY TO WORK WITH!", Comment = "Working with Angela is very fun, we have lots of ideas and we find ways to integrate them with each other's expertise. Would love to work in another project together!" },
+        new ReviewItem { Rating = 4.5, Title = "A JOY TO WORK WITH!", Comment = "Working with Angela is very fun, we have lots of ideas and we find ways to integrate them with each other's expertise. Would love to work in another project together!" }
+    };
+
+    private void OpenModal()
+    {
+        IsModalOpen = true;
+    }
+
+    private void CloseModal()
+    {
+        IsModalOpen = false;
+    }
+
+    private void SetRating(int stars)
+    {
+        SelectedStars = stars;
+    }
+
+    private void SubmitForm()
+    {
+        if (!string.IsNullOrWhiteSpace(NewReview.LikedReason) || !string.IsNullOrWhiteSpace(NewReview.SenderName))
+        {
+            Reviews.Insert(0, new ReviewItem
+            {
+                Rating = SelectedStars,
+                Title = string.IsNullOrWhiteSpace(NewReview.SenderName) ? "A JOY TO WORK WITH!" : $"{NewReview.SenderName.ToUpper()}'S REVIEW",
+                Comment = !string.IsNullOrWhiteSpace(NewReview.LikedReason) ? NewReview.LikedReason : "Great experience working together!"
+            });
+        }
+
+        NewReview = new();
+        IsModalOpen = false;
+    }
+
+    public class ReviewItem
+    {
+        public double Rating { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Comment { get; set; } = string.Empty;
+    }
+
+    public class ReviewModel
+    {
+        public string SenderName { get; set; } = string.Empty;
+        public string EventWorked { get; set; } = string.Empty;
+        public string EventDate { get; set; } = string.Empty;
+        public string LikedReason { get; set; } = string.Empty;
+        public string DislikedReason { get; set; } = string.Empty;
+        public string GeneralComments { get; set; } = string.Empty;
+    }
+}

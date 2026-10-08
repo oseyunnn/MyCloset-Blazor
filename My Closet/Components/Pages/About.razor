@@ -1,0 +1,245 @@
+@page "/about"
+@rendermode InteractiveServer
+
+<div class="relative w-full min-h-screen bg-[#FDF8F2] overflow-x-hidden flex flex-col justify-between select-none">
+
+    <!-- Decorative Scrapbook Star Doodles -->
+    <div class="absolute top-16 left-[10%] text-[#6891B3]/40 text-xl animate-sparkle pointer-events-none z-30">✦</div>
+    <div class="absolute top-28 right-[15%] text-white/30 text-2xl animate-sparkle [animation-delay:1s] pointer-events-none z-30">★</div>
+
+    <!-- HERO SECTION (Dark Slate Blue Background) -->
+    <section class="relative w-full bg-[#2C3545] text-white min-h-[500px] lg:min-h-[540px] pb-8 overflow-hidden shadow-paper-lg">
+
+        <!-- Header / Navbar -->
+        <header class="relative z-30 flex items-center justify-between px-8 py-5 md:px-16">
+            <a href="/" class="font-inspiration text-[42px] text-[#6891B3] leading-none transition-all duration-300 hover:rotate-[-3deg] hover:scale-105 shadow-paper">
+                My Closet
+            </a>
+
+            <nav class="flex items-center gap-8">
+                <a href="/" class="group relative font-inika text-[15px] text-white font-semibold hover:text-[#6891B3] transition-all duration-200 hover:-translate-y-0.5 inline-block">
+                    home
+                    <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#6891B3] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="/about" class="group relative font-inika text-[15px] text-[#6891B3] font-bold inline-block">
+                    about
+                    <span class="absolute left-0 -bottom-1 h-[2px] w-full bg-[#6891B3]"></span>
+                </a>
+                <a href="/works" class="group relative font-inika text-[15px] text-white font-semibold hover:text-[#6891B3] transition-all duration-200 hover:-translate-y-0.5 hover:rotate-2 inline-block">
+                    works
+                    <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#6891B3] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                 <a href="/review" class="group relative font-inika text-[15px] text-white font-semibold hover:text-[#6891B3] transition-all duration-200 hover:-translate-y-0.5 hover:rotate-2 inline-block">
+                    review
+                    <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#6891B3] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Hero Content Area -->
+        <div class="relative z-20 max-w-[1250px] mx-auto px-8 md:px-16 pt-4 flex flex-col lg:flex-row items-center justify-between">
+            
+            <!-- Hero Left Text Column -->
+            <div class="flex flex-col items-start max-w-[520px] z-10 mb-8 lg:mb-0">
+                <div class="flex items-baseline gap-3 mb-2">
+                    <span class="font-inspiration text-[100px] sm:text-[130px] md:text-[150px] text-[#6891B3] leading-[0.7] drop-shadow-md">
+                        About
+                    </span>
+                    <span class="font-inspiration text-[100px] sm:text-[130px] md:text-[150px] text-white leading-[0.7] drop-shadow-md">
+                        Me
+                    </span>
+                </div>
+
+                <!-- Washi Tape Note Box -->
+                <div class="relative bg-white/10 backdrop-blur-xs p-5 rounded-xl border border-white/15 shadow-paper rotate-[-1deg] mb-6 transition-transform duration-300 hover:rotate-0">
+                    <div class="absolute -top-3 left-6 w-14 h-4 washi-tape rotate-[-2deg]"></div>
+                    <p class="font-inika text-white text-sm sm:text-base leading-relaxed opacity-95">
+                        What's a computer science degree gonna make me do?<br />
+                        Create a website about all the things I love and do!
+                    </p>
+                </div>
+
+                <a href="/works" 
+                   class="px-6 py-2.5 bg-[#6891B3] hover:bg-[#577b9b] text-white font-inika text-sm font-bold rounded-full border-2 border-white/30 shadow-paper transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 group">
+                    <span>View Works</span>
+                    <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </a>
+            </div>
+
+            <!-- Hero Right Illustration Layering Stack with Interactive Speech Bubble -->
+            <div class="relative w-full max-w-[480px] h-[360px] sm:h-[400px] flex items-end justify-end">
+                <!-- Night Building Background Cutout -->
+                <img src="assets/e3f0a.png" 
+                     alt="Building at night illustration" 
+                     class="absolute right-0 bottom-0 h-[95%] sm:h-[105%] w-auto object-contain z-10 shadow-paper-lg" />
+
+                <!-- Woman Walking Dog Wrapper -->
+                <div class="absolute right-[120px] sm:right-[160px] -bottom-2 h-[80%] sm:h-[88%] w-auto z-20 group flex items-end justify-center cursor-pointer"
+                     @mouseenter="ChangeGirlSpeech">
+
+                    <!-- Interactive Popup Bubble (Hover Activated) -->
+                    <div class="absolute -top-12 -left-12 sm:-left-20 z-40 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none">
+                        <div class="speech-bubble-tail bg-[#FAF7F5] border-2 border-gray-800/80 px-4 py-2.5 rounded-2xl shadow-paper-lg animate-paper-pop max-w-[200px]">
+                            <p class="font-inika text-gray-900 font-bold text-xs sm:text-sm leading-snug text-center uppercase tracking-wide">
+                                @currentGirlPhrase
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Woman Walking Dog Image -->
+                    <img src="assets/86625.png" 
+                         alt="Woman walking dog illustration" 
+                         class="h-full w-auto object-contain shadow-paper-lg transition-transform duration-300 group-hover:scale-103" />
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ULTIMATE FAVORITES SECTION -->
+    <section class="relative z-20 bg-[#FDF8F2] py-12 md:py-16 px-6 md:px-16 flex-1 flex flex-col items-center justify-center">
+
+        <!-- Section Title -->
+        <div class="flex flex-col items-center text-center mb-8 select-none">
+            <h2 class="font-inspiration text-[90px] sm:text-[110px] text-[#C48E68] leading-[0.6] mb-1 drop-shadow-xs">
+                Ultimate
+            </h2>
+            <p class="font-inika font-bold text-3xl sm:text-4xl text-[#2C3545]">
+                Favorites
+            </p>
+        </div>
+
+        <!-- Carousel Container with Transparent Interactive Arrows -->
+        <div class="relative w-full max-w-[960px] flex items-center justify-between gap-4 sm:gap-8 min-h-[280px]">
+
+            <!-- Left Arrow Button -->
+            <button @onclick="PrevTab" 
+                    aria-label="Previous Favorite"
+                    class="p-3 sm:p-4 rounded-full text-[#C48E68] hover:text-[#2C3545] bg-white/60 hover:bg-white transition-all duration-200 hover:scale-110 active:scale-90 focus:outline-none cursor-pointer z-30 shadow-paper backdrop-blur-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-14 sm:h-14 stroke-current fill-none stroke-[2.5]" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </button>
+
+            <!-- Active Favorite Card View -->
+            <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 animate-tab-fade key-@activeTab">
+                
+                <!-- Circle Frame -->
+                <div class="relative w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] rounded-full bg-[#6891B3] flex items-center justify-center overflow-hidden shadow-paper-lg border-4 border-white shrink-0 group transition-transform duration-300 hover:scale-103">
+                    <img src="@CurrentFavorite.Image" 
+                         alt="@CurrentFavorite.Title" 
+                         class="w-[82%] h-[82%] object-contain transition-transform duration-300 group-hover:scale-108" />
+                </div>
+
+                <!-- Scrapbook Text Card -->
+                <div class="relative bg-white/95 p-6 sm:p-8 rounded-2xl border border-[#E3CEBE]/80 shadow-paper max-w-[440px] rotate-[1deg] transition-transform duration-300 hover:rotate-0">
+                    <div class="absolute -top-3 right-8 w-16 h-4 washi-tape rotate-[3deg]"></div>
+                    <h3 class="font-inika font-bold text-xl sm:text-2xl text-[#C48E68] mb-3">
+                        @CurrentFavorite.Title
+                    </h3>
+                    <p class="font-inika text-gray-800 text-sm sm:text-base leading-relaxed font-medium">
+                        @CurrentFavorite.Description
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button @onclick="NextTab" 
+                    aria-label="Next Favorite"
+                    class="p-3 sm:p-4 rounded-full text-[#C48E68] hover:text-[#2C3545] bg-white/60 hover:bg-white transition-all duration-200 hover:scale-110 active:scale-90 focus:outline-none cursor-pointer z-30 shadow-paper backdrop-blur-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-14 sm:h-14 stroke-current fill-none stroke-[2.5]" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+
+        </div>
+
+        <!-- Carousel Pagination Dots -->
+        <div class="flex items-center gap-3 mt-8">
+            @for (int i = 0; i < favorites.Length; i++)
+            {
+                int index = i;
+                <button @onclick="() => SetTab(index)"
+                        aria-label="Go to slide @(index + 1)"
+                        class="h-3 rounded-full transition-all duration-300 cursor-pointer shadow-xs @(activeTab == index ? "w-8 bg-[#C48E68]" : "w-3 bg-[#E3CEBE] hover:bg-[#C48E68]/60")">
+                </button>
+            }
+        </div>
+
+    </section>
+
+    <!-- Footer Band -->
+    <footer class="relative z-30 bg-[#2C3545] py-6 px-6 text-center text-white border-t border-white/10 shadow-paper-lg">
+        <p class="font-inika text-xs sm:text-sm text-gray-300">
+            Guess what's inside my closet...?
+        </p>
+    </footer>
+
+</div>
+
+@code {
+    // Girl Speech Bubble Phrases (Emoji-free)
+    private readonly string[] girlPhrases = new[]
+    {
+        "Get to know ur gal!",
+        "ITS ALL ABOUT ME!",
+        "Welcome to my world!",
+        "Walking into my era!",
+        "A CS girlie doing CS things!",
+        "Main character energy!",
+        "Living life in full color!"
+    };
+
+    private string currentGirlPhrase = "Get to know ur gal!";
+    private readonly Random random = new Random();
+
+    private void ChangeGirlSpeech()
+    {
+        int index = random.Next(girlPhrases.Length);
+        currentGirlPhrase = girlPhrases[index];
+    }
+
+    // Carousel Logic
+    private int activeTab = 0;
+
+    private record FavoriteItem(string Image, string Title, string Description);
+
+    private readonly FavoriteItem[] favorites = new[]
+    {
+        new FavoriteItem(
+            "assets/d8dba.png",
+            "Style Switcharoo!",
+            "If there's anything I don't want to miss out on, it's to dress to impress... no other than myself! I love mixing patterns, thrifting cool textures, and exploring how to express my identity and creativity through what I wear. If you're ever looking for someone to help you whoop your closet to shape, I'm always available for a quick sidequest!"
+        ),
+        new FavoriteItem(
+            "assets/d6674.png",
+            "Working on my Computah!",
+            "Me and my computer go way back! We enjoy doing many things together including watching good shows, doing hard research and assignments, and also looking up the possible weather forecast for our next planned outing!"
+        ),
+        new FavoriteItem(
+            "assets/9a26a.png",
+            "Book and Wormssssss!",
+            "A good book can keep on my toes for days! I love the thrill of looking out for my next read although my current lifestyle has not given me as much opportunities to read than I wanted to!"
+        )
+    };
+
+    private FavoriteItem CurrentFavorite => favorites[activeTab];
+
+    private void NextTab()
+    {
+        activeTab = (activeTab + 1) % favorites.Length;
+    }
+
+    private void PrevTab()
+    {
+        activeTab = (activeTab - 1 + favorites.Length) % favorites.Length;
+    }
+
+    private void SetTab(int index)
+    {
+        activeTab = index;
+    }
+}

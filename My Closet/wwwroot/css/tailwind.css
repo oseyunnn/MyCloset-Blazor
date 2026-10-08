@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+@source "../../**/*.razor";
+
+@font-face {
+  font-family: "Inspiration";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/Inspiration-Regular_1") format("woff2");
+}
+
+@font-face {
+  font-family: "Inika";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/Inika-Regular_1") format("woff2");
+}
+
+@theme {
+  --font-inspiration: "Inspiration", cursive;
+  --font-inika: "Inika", serif;
+}
+
+/* Paper Cutout Drop Shadows */
+.shadow-paper {
+  filter: drop-shadow(3px 4px 2px rgba(0, 0, 0, 0.12));
+}
+
+.shadow-paper-lg {
+  filter: drop-shadow(5px 8px 4px rgba(0, 0, 0, 0.16));
+}
+
+/* Scrapbook Paper Grain Pattern */
+.bg-paper-texture {
+  background-color: #F8E3EC;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 0),
+    radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 0);
+  background-size: 8px 8px, 12px 12px;
+}
+
+/* Washi Tape Accent */
+.washi-tape {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(224, 146, 187, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* Speech Bubble Tail pointing down-left toward the girl's head */
+.speech-bubble-tail-tr {
+  position: relative;
+}
+
+.speech-bubble-tail-tr::after {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 13px solid #FAF7F5;
+}
+
+.speech-bubble-tail-tr::before {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 18px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid rgba(31, 41, 55, 0.8);
+}
+
+/* Pop-In & Float Keyframe Animations */
+@keyframes paperPopIn {
+  0% { transform: scale(0.85) translateY(10px) rotate(2deg); opacity: 0; }
+  100% { transform: scale(1) translateY(0) rotate(-1deg); opacity: 1; }
+}
+
+@keyframes sparkleGlow {
+  0%, 100% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.animate-paper-pop {
+  animation: paperPopIn 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-sparkle {
+  animation: sparkleGlow 2.5s ease-in-out infinite;
+}
+
+@import "tailwindcss";
+
+@source "../../**/*.razor";
+
+@font-face {
+  font-family: "Inspiration";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/Inspiration-Regular_1") format("woff2");
+}
+
+@font-face {
+  font-family: "Inika";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/Inika-Regular_1") format("woff2");
+}
+
+@theme {
+  --font-inspiration: "Inspiration", cursive;
+  --font-inika: "Inika", serif;
+}
+
+/* Warm Scrapbook Paper Background */
+.bg-works-texture {
+  background-color: #F3E5D8;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 0),
+    radial-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 0);
+  background-size: 8px 8px, 12px 12px;
+}
+
+/* 3D Flip Card Container Setup */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+@import "tailwindcss";
+
+@source "../../**/*.razor";
+
+@font-face {
+  font-family: "Inspiration";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/Inspiration-Regular_1") format("woff2");
+}
+
+@font-face {
+  font-family: "Inika";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/Inika-Regular_1") format("woff2");
+}
+
+@theme {
+  --font-inspiration: "Inspiration", cursive;
+  --font-inika: "Inika", serif;
+}
+
+/* Paper Shadows */
+.shadow-paper {
+  filter: drop-shadow(3px 4px 2px rgba(0, 0, 0, 0.15));
+}
+
+.shadow-paper-lg {
+  filter: drop-shadow(5px 8px 4px rgba(0, 0, 0, 0.22));
+}
+
+/* Tab Slide-Fade Animation */
+@keyframes tabFadeIn {
+  0% { opacity: 0; transform: translateX(12px) scale(0.98); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.animate-tab-fade {
+  animation: tabFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Green Sage Background Texture for Review Page */
+.bg-review-texture {
+  background-color: #79A971;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 0),
+    radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 0);
+  background-size: 8px 8px, 12px 12px;
+}
+
+/* Darker Green Bottom Section Texture */
+.bg-review-dark-texture {
+  background-color: #4B6E44;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 0);
+  background-size: 8px 8px;
+}
+
+/* Smooth Modal Backdrop Fade & Pop-up */
+@keyframes modalPopIn {
+  0% { opacity: 0; transform: scale(0.94) translateY(12px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-modal-pop {
+  animation: modalPopIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

@@ -1,0 +1,132 @@
+@page "/works"
+@rendermode InteractiveServer
+
+<div class="relative w-full min-h-screen bg-works-texture overflow-x-hidden flex flex-col justify-between select-none">
+
+    <!-- Scrapbook Floating Stars -->
+    <div class="absolute top-16 left-[12%] text-[#C48E68]/40 text-xl pointer-events-none z-10">✦</div>
+    <div class="absolute top-28 right-[18%] text-[#C48E68]/40 text-2xl pointer-events-none z-10">★</div>
+
+    <!-- Header / Navbar -->
+    <header class="relative z-30 flex items-center justify-between px-8 py-5 md:px-16">
+        <a href="/" class="font-inspiration text-4xl text-[#C48E68] leading-none transition-all duration-300 hover:rotate-[-3deg] hover:scale-105">
+            My Closet
+        </a>
+
+        <nav class="flex items-center gap-8">
+            <a href="/" class="group relative font-inika text-base text-gray-800 font-semibold hover:text-[#C48E68] transition-all duration-200 hover:-translate-y-0.5 inline-block">
+                home
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#C48E68] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="/about" class="group relative font-inika text-base text-gray-800 font-semibold hover:text-[#C48E68] transition-all duration-200 hover:-translate-y-0.5 hover:rotate-2 inline-block">
+                about
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#C48E68] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="/works" class="group relative font-inika text-base text-[#C48E68] font-bold inline-block">
+                works
+                <span class="absolute left-0 -bottom-1 h-[2px] w-full bg-[#C48E68]"></span>
+            </a>
+               <a href="/review" class="group relative font-inika text-base text-gray-800 font-semibold hover:text-[#C48E68] transition-all duration-200 hover:-translate-y-0.5 hover:rotate-2 inline-block">
+                review
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#C48E68] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section: Center-Aligned "Best Dressed" -->
+    <section class="relative z-10 flex flex-col items-center justify-center pt-2 pb-4">
+        <div class="relative flex flex-col items-center justify-center text-center select-none cursor-default group transition-transform duration-300 hover:scale-103">
+            <span class="font-inika font-bold text-5xl sm:text-6xl md:text-7xl text-[#C48E68] leading-none tracking-tight -mb-2 sm:-mb-4">
+                Best
+            </span>
+            <span class="font-inspiration text-7xl sm:text-8xl md:text-[115px] text-gray-900 leading-none">
+                Dressed
+            </span>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="relative z-20 flex-1 flex flex-col md:flex-row justify-center items-end gap-6 md:gap-8 px-6 pb-8 max-w-[1250px] mx-auto w-full">
+
+        <!-- 1. LEFT FIGURE: Game Narrative -->
+        <div class="relative w-full max-w-[320px] md:w-1/3 h-[490px] sm:h-[530px] group perspective-1000 cursor-pointer">
+            <div class="absolute inset-0 bg-[#EFE0D2]/80 rounded-[50%] z-0 pointer-events-none transition-all duration-300 group-hover:bg-[#FAF0E6] group-hover:scale-105 border border-[#E3CEBE]/60 shadow-xs"></div>
+
+            <div class="relative w-full h-full duration-700 transform-style-3d group-hover:rotate-y-180 z-10">
+                <div class="absolute inset-0 w-full h-full flex items-end justify-center pb-4 backface-hidden">
+                    <img src="assets/5635e.png" 
+                         alt="Polka-dot dress illustration" 
+                         style="height: 90%; width: auto;"
+                         class="object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105" />
+                </div>
+                <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center px-8 text-center rotate-y-180 backface-hidden">
+                    <h3 class="font-inika font-bold text-[#C48E68] text-xl mb-3">
+                        Game Narrative
+                    </h3>
+                    <p class="font-inika text-gray-800 text-sm leading-relaxed font-medium">
+                        As a hobby writer, I am proud to explore different ways of telling a story.<br/><br/>
+                        Writing game narratives for different game projects has taught me a lot about creating different worlds, characters, and my favorite part... suspense!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. CENTER FIGURE: Software for Good -->
+        <div class="relative w-full max-w-[340px] md:w-1/3 h-[520px] sm:h-[560px] group perspective-1000 cursor-pointer">
+            <div class="absolute inset-0 bg-[#EFE0D2]/90 rounded-[50%] z-0 pointer-events-none transition-all duration-300 group-hover:bg-[#FAF0E6] group-hover:scale-105 border border-[#E3CEBE]/70 shadow-sm"></div>
+
+            <div class="relative w-full h-full duration-700 transform-style-3d group-hover:rotate-y-180 z-10">
+                <div class="absolute inset-0 w-full h-full flex items-end justify-center pb-2 backface-hidden">
+                    <img src="assets/7922e.png" 
+                         alt="Barbie ballgown illustration" 
+                         style="height: 98%; width: auto;"
+                         class="object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105" />
+                </div>
+                <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center px-8 text-center rotate-y-180 backface-hidden">
+                    <h3 class="font-inika font-bold text-[#C48E68] text-xl mb-3">
+                        Software for Good
+                    </h3>
+                    <p class="font-inika text-gray-800 text-sm leading-relaxed font-medium">
+                        Technology opens many doors for innovation.<br/><br/>
+                        I have been exploring different projects that involve how we can utilize our current resources to help those around us and empower various communities in the Philippines.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. RIGHT FIGURE: The Other World (Aligned Baseline & Corrected Height) -->
+        <div class="relative w-full max-w-[320px] md:w-1/3 h-[490px] sm:h-[530px] group perspective-1000 cursor-pointer">
+            <div class="absolute inset-0 bg-[#EFE0D2]/80 rounded-[50%] z-0 pointer-events-none transition-all duration-300 group-hover:bg-[#FAF0E6] group-hover:scale-105 border border-[#E3CEBE]/60 shadow-xs"></div>
+
+            <div class="relative w-full h-full duration-700 transform-style-3d group-hover:rotate-y-180 z-10">
+                <div class="absolute inset-0 w-full h-full flex items-end justify-center pb-2 backface-hidden">
+                    <img src="assets/5c74f.png" 
+                         alt="Black gown illustration" 
+                         style="height: 98%; width: auto; transform: scale(1.15) translateY(12px); transform-origin: bottom center;"
+                         class="object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-[1.20]" />
+                </div>
+                <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center px-8 text-center rotate-y-180 backface-hidden">
+                    <h3 class="font-inika font-bold text-[#C48E68] text-xl mb-3">
+                        The Other World
+                    </h3>
+                    <p class="font-inika text-gray-900 text-sm leading-relaxed font-medium">
+                        Outside of Tech, I take pride in my different advocates and leadership opportunities.<br/><br/>
+                        In my college years, I have made sure to make time to answer the call of service and offer my skills to create memorable experiences for those around me.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer Band -->
+    <footer class="relative z-30 bg-[#DAB292] py-6 px-6 text-center">
+        <h2 class="font-inika font-bold text-[#5C3C24] text-lg sm:text-xl mb-1.5">
+            About My Works
+        </h2>
+        <p class="font-inika text-white text-xs sm:text-sm max-w-[540px] mx-auto leading-relaxed">
+            I work as a hobby designer and software developer. Most of my projects involve using technology for good.
+        </p>
+    </footer>
+
+</div>

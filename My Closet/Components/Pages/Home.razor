@@ -1,0 +1,114 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+<div class="relative w-full h-screen bg-paper-texture overflow-hidden flex flex-col justify-between select-none">
+
+    <!-- Decorative Scrapbook Accents -->
+    <div class="absolute top-16 left-[14%] text-[#E092BB]/50 text-xl animate-sparkle pointer-events-none z-10">✦</div>
+    <div class="absolute top-28 right-[24%] text-[#E092BB]/50 text-2xl animate-sparkle [animation-delay:1s] pointer-events-none z-10">★</div>
+    <div class="absolute bottom-24 left-[38%] text-[#E092BB]/50 text-base animate-sparkle [animation-delay:500ms] pointer-events-none z-10">✦</div>
+
+    <!-- Header / Navbar -->
+    <header class="relative z-30 flex items-center justify-between px-8 py-5 md:px-16">
+        <a href="/" class="font-inspiration text-[42px] text-[#E092BB] leading-none transition-all duration-300 hover:rotate-[-3deg] hover:scale-108 hover:drop-shadow-[0_4px_10px_rgba(224,146,187,0.4)] shadow-paper">
+            My Closet
+        </a>
+
+        <nav class="flex items-center gap-8">
+            <a href="/" class="group relative font-inika text-[15px] text-[#E092BB] font-bold transition-transform duration-200 hover:-translate-y-0.5 inline-block">
+                home
+                <span class="absolute left-0 -bottom-1 h-[2px] w-full bg-[#E092BB]"></span>
+            </a>
+            <a href="/about" class="group relative font-inika text-[15px] text-gray-900 font-semibold hover:text-[#E092BB] transition-all duration-200 hover:-translate-y-0.5 hover:rotate-2 inline-block">
+                about
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#E092BB] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="/works" class="group relative font-inika text-[15px] text-gray-900 font-semibold hover:text-[#E092BB] transition-all duration-200 hover:-translate-y-0.5 hover:-rotate-2 inline-block">
+                works
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#E092BB] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+             <a href="/review" class="group relative font-inika text-[15px] text-gray-900 font-semibold hover:text-[#E092BB] transition-all duration-200 hover:-translate-y-0.5 hover:rotate-2 inline-block">
+                review
+                <span class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#E092BB] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Canvas -->
+    <main class="relative z-10 flex-1 flex items-center justify-center">
+
+        <!-- Wide, Soft Cream-Pink Oval Spotlight -->
+        <div class="absolute top-1/2 left-[48%] -translate-x-1/2 -translate-y-1/2 w-[82vw] max-w-[1200px] h-[46vh] max-h-[440px] bg-[#FFF4F8] rounded-[50%] z-0 pointer-events-none shadow-sm border border-pink-200/40"></div>
+
+        <!-- Hero Title Layering -->
+        <div class="relative z-10 flex flex-col items-center -ml-[12vw] sm:-ml-[16vw] pointer-events-none">
+            <p class="font-inspiration text-[120px] sm:text-[160px] md:text-[190px] text-[#E092BB] leading-[0.7] -mr-6 shadow-paper transition-transform duration-300 hover:scale-102 pointer-events-auto cursor-default">
+                Angela
+            </p>
+            <p class="font-inspiration text-[120px] sm:text-[160px] md:text-[190px] text-black leading-[0.7] ml-28 sm:ml-40 transition-transform duration-300 hover:scale-102 pointer-events-auto cursor-default">
+                Jahziel
+            </p>
+        </div>
+
+        <!-- Fashion Girl Illustration & Upper-Right Speech Bubble -->
+        <div class="absolute bottom-0 right-[4%] md:right-[8%] lg:right-[11%] h-[88vh] max-h-[770px] z-20 group flex items-end justify-center pointer-events-auto cursor-pointer"
+             @onmouseover="ChangeBubbleText">
+
+            <!-- Upper-Right Speech Bubble -->
+            <div class="absolute top-[18%] right-2 sm:right-6 z-40 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none">
+                <div class="speech-bubble-tail-tr bg-[#FAF7F5] border-2 border-gray-800/80 px-5 py-3 rounded-2xl shadow-paper-lg animate-paper-pop max-w-[220px]">
+                    <p class="font-inika text-gray-900 font-bold text-xs sm:text-sm leading-snug text-center">
+                        @currentCutePhrase
+                    </p>
+                </div>
+            </div>
+
+            <!-- Fashion Girl Cutout Image -->
+            <img src="assets/a694a.png" 
+                 alt="Fashion illustration" 
+                 class="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-102 group-hover:-rotate-1 shadow-paper-lg" />
+        </div>
+
+        <!-- Bottom-Left Narrative & View Closet Button -->
+        <div class="absolute bottom-10 left-8 md:left-16 z-30 max-w-[280px] sm:max-w-[320px] flex flex-col items-start gap-3.5">
+            <div class="relative bg-white/90 p-4 rounded-xl border border-pink-200/80 shadow-paper backdrop-blur-xs rotate-[-1deg] transition-transform duration-300 hover:rotate-0">
+                <div class="absolute -top-3 left-6 w-14 h-4 washi-tape rotate-[-2deg]"></div>
+                <p class="font-inika text-gray-900 text-xs sm:text-sm leading-relaxed font-semibold">
+                    Flip through my closet and find the perfect match for your next life changing experience!
+                </p>
+            </div>
+            
+            <a href="/works" 
+               class="px-6 py-2.5 bg-[#E092BB] hover:bg-[#d072a3] text-white font-inika text-sm font-bold rounded-full border-2 border-white shadow-paper hover:shadow-paper-lg transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 group">
+                <span>View Closet!</span>
+                <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </a>
+        </div>
+
+    </main>
+
+</div>
+
+@code {
+    private readonly string[] cutePhrases = new[]
+    {
+        "Hi girl! Luv your shoes!",
+        "OOTD goals achieved!",
+        "Looking fabulous today!",
+        "Ready for a closet tour?",
+        "Slay the day, bestie!",
+        "Iconic outfit choice!",
+        "Too cute to handle!",
+        "Serving major looks!"
+    };
+
+    private string currentCutePhrase = "Hi girl! Luv your shoes!";
+    private readonly Random random = new Random();
+
+    private void ChangeBubbleText()
+    {
+        int index = random.Next(cutePhrases.Length);
+        currentCutePhrase = cutePhrases[index];
+        StateHasChanged();
+    }
+}
